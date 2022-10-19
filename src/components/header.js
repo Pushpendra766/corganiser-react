@@ -10,7 +10,9 @@ export const Header = () => {
             <div className="flex flex-row gap-12 text-light">
                 {tabs.map(tab => {
                     return (
-                        <button className="text-lg font-semibold">{tab}</button>
+                        <button className="text-lg font-semibold" key={tab}>
+                            {tab}
+                        </button>
                     );
                 })}
             </div>
