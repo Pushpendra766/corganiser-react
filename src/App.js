@@ -1,15 +1,18 @@
 import "./App.css";
-import { Header } from "./components/header";
-import { LearningSection } from "./components/learningSection";
-import { Footer } from "./components/footer";
+import { Home } from "./components/home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { VideoPlayer } from "./components/videoPlayer";
 
 function App() {
     return (
-        <div className="flex flex-col gap-10">
-            <Header />
-            <LearningSection />
-            <Footer />
-        </div>
+        <>
+            <Router>
+                <Routes>
+                    <Route exact path="/" element={<Home />} />
+                    <Route path="/player" element={<VideoPlayer />} />
+                </Routes>
+            </Router>
+        </>
     );
 }
 

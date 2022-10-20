@@ -1,5 +1,8 @@
 import React from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
+import { Link } from "react-router-dom";
+// import { VideoPlayer } from "./videoPlayer";
+// import App from "../App";
 
 export const CourseCard = props => {
     const course = props.course;
@@ -18,7 +21,9 @@ export const CourseCard = props => {
                 />
                 <p>{course.progress}% complete</p>
                 <button className="border rounded-full px-4 py-2 w-full font-semibold text-[#ffffff] bg-primary hover:bg-dark text-base">
-                    {course.progress === 0 ? "Start" : "Continue"} Learning
+                    <Link to="/player">
+                        {course.progress === 0 ? "Start" : "Continue"} Learning
+                    </Link>
                 </button>
             </div>
         </div>

@@ -5,28 +5,7 @@ import axios from "axios";
 import env from "react-dotenv";
 
 export const LearningSection = () => {
-    const courses = [
-        {
-            name: "Data Structures and Algorithms in Hindi",
-            channel: "Striver",
-            thumbnail:
-                "https://prod-discovery.edx-cdn.org/media/course/image/0e575a39-da1e-4e33-bb3b-e96cc6ffc58e-8372a9a276c1.png",
-            progress: 40,
-        },
-        {
-            name: "Machine Learning",
-            channel: "Code for Cause",
-            thumbnail:
-                "https://prod-discovery.edx-cdn.org/media/course/image/156313d6-f892-4b08-9cee-43ea582f4dfb-7b98c686abcc.small.png",
-            progress: 80,
-        },
-        {
-            channel: "CodeWithHarry",
-            name: "Data Structures and Algorithms Course in Hindi",
-            progress: 40,
-            thumbnail: "https://i.ytimg.com/vi/5_5oE5lgrhw/mqdefault.jpg",
-        },
-    ];
+    const [courses, setCourses] = useState([]);
     const inputRef = useRef(null);
     const [addCourse, setAddCourse] = useState(false);
 
@@ -48,17 +27,17 @@ export const LearningSection = () => {
         axios
             .request(options)
             .then(function (response) {
-                console.log(response.data);
                 const newCourse = {
                     id: playlistID,
                     name: response.data.items[0].snippet.title,
                     channel: response.data.items[0].snippet.channelTitle,
                     thumbnail:
                         response.data.items[0].snippet.thumbnails.medium.url,
-                    progress: 40,
+                    progress: 0,
                 };
-                courses.push(newCourse);
+                setCourses(courses => [...courses, newCourse]);
                 console.log(courses);
+                console.log(courses.length);
             })
             .catch(function (error) {
                 console.error(error);
@@ -70,7 +49,7 @@ export const LearningSection = () => {
             <h2 className="text-primary text-center text-2xl font-bold">
                 My Learnings
             </h2>
-            <div className="flex flex-row gap-10 mx-20 border-2 border-dark bg-light rounded-xl p-10">
+            <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 content-center grid-flow-row flex-row gap-6 mx-20 border-2 border-dark bg-light rounded-xl p-8">
                 {courses.map(course => {
                     return <CourseCard course={course} key={course.name} />;
                 })}
