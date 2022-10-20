@@ -2,11 +2,12 @@ import React from "react";
 import { CourseCard } from "./courseCard";
 import { useState, useRef } from "react";
 import axios from "axios";
+import env from "react-dotenv";
 
 export const LearningSection = () => {
     const courses = [
         {
-            name: "Data Structures and Algorithms Course in Hindi",
+            name: "Data Structures and Algorithms in Hindi",
             channel: "Striver",
             thumbnail:
                 "https://prod-discovery.edx-cdn.org/media/course/image/0e575a39-da1e-4e33-bb3b-e96cc6ffc58e-8372a9a276c1.png",
@@ -39,8 +40,7 @@ export const LearningSection = () => {
             url: "https://youtube-v31.p.rapidapi.com/playlists",
             params: { id: playlistID, part: "snippet" },
             headers: {
-                "X-RapidAPI-Key":
-                    "3d64a8bd0cmshd5f69b82b666ab6p10f313jsnb7ba1d1993a6",
+                "X-RapidAPI-Key": env.PLAYLIST_API_KEY,
                 "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
             },
         };
@@ -50,6 +50,7 @@ export const LearningSection = () => {
             .then(function (response) {
                 console.log(response.data);
                 const newCourse = {
+                    id: playlistID,
                     name: response.data.items[0].snippet.title,
                     channel: response.data.items[0].snippet.channelTitle,
                     thumbnail:
