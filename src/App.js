@@ -1,7 +1,7 @@
 import "./App.css";
 import { Home } from "./components/home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { VideoPlayer } from "./components/videoPlayer";
+import { VideoPlayer } from "./components/VideoPlayer/VideoPlayer";
 
 function App() {
     return (

@@ -1,8 +1,6 @@
 import React from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom";
-// import { VideoPlayer } from "./videoPlayer";
-// import App from "../App";
 
 export const CourseCard = props => {
     const course = props.course;
