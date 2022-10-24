@@ -36,8 +36,6 @@ export const LearningSection = () => {
                     progress: 0,
                 };
                 setCourses(courses => [...courses, newCourse]);
-                console.log(courses);
-                console.log(courses.length);
             })
             .catch(function (error) {
                 console.error(error);
