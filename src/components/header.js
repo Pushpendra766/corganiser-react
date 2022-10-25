@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const Header = props => {
     const nav = props.nav && true;
     const courseTitle = props.courseTitle;
-    const tabs = ["My Learning", "Notes", "About Us", "FAQs"];
+    const [currentPage, setCurrentPage] = useState(props.currentPage);
+
     return (
         <div className="flex flex-row justify-between px-4 lg:px-20 py-4 bg-gradient-to-r from-dark to-secondary via-primary">
             <Link to="/">
@@ -21,17 +23,44 @@ export const Header = props => {
                 <p>{courseTitle}</p>
             </div>
             <div
-                className={`flex flex-row gap-6 lg:gap-12 text-light ${
+                className={`flex flex-row gap-6 lg:gap-12 text-light font-semibold ${
                     nav === false && "hidden"
                 }`}
             >
-                {tabs.map(tab => {
-                    return (
-                        <button className="text-lg font-semibold" key={tab}>
-                            {tab}
-                        </button>
-                    );
-                })}
+                <button
+                    className={`text-lg  ${
+                        currentPage === "My Learning" && "font-bold text-white"
+                    }`}
+                    onClick={() => {
+                        setCurrentPage("My Learning");
+                    }}
+                >
+                    <Link to="/">My Learning</Link>
+                </button>
+                <button
+                    className={`text-lg  ${
+                        currentPage === "About" && "font-bold text-white"
+                    }`}
+                    onClick={() => {
+                        window.scrollTo({
+                            top: document.documentElement.scrollHeight,
+                            behavior: "smooth",
+                        });
+                        setCurrentPage("About");
+                    }}
+                >
+                    About
+                </button>
+                <button
+                    className={`text-lg  ${
+                        currentPage === "FAQs" && "font-bold text-white"
+                    }`}
+                    onClick={() => {
+                        setCurrentPage("FAQs");
+                    }}
+                >
+                    <Link to="/FAQs">FAQs</Link>
+                </button>
             </div>
         </div>
     );

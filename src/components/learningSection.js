@@ -107,7 +107,7 @@ export const LearningSection = () => {
                         handleClick();
                     }}
                 >
-                    Add New Course
+                    Add Course
                 </button>
             </div>
         </>

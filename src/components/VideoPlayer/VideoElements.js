@@ -4,8 +4,19 @@ import { useRef, useState } from "react";
 export const Comments = ({ videoId }) => {
     return (
         <div className="mx-10 text-lg">
-            Sorry but ...😐
+            Sorry...
             <img src="/comments.png" alt="loading..." />
+            <p className="pt-4">
+                I think 90% of Youtube comments are either appreciation, hate
+                speech or spam comments. And none of them are related to
+                learning or helping user with their course. There are not
+                usually some good discussion that helps user with their
+                learnings as it happens on other learning platforms like Udemy
+                or Coursera. <br /> While planning this app I thought I will
+                include them here but then I realised that they are not useful
+                here, while the aim of this app is to avoid distractions, adding
+                comments will do no good.
+            </p>
         </div>
     );
 };

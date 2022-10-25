@@ -95,13 +95,13 @@ export const VideoPlayer = () => {
                 <div className="w-8/12">
                     <ReactPlayer
                         ref={playerRef}
-                        className="w-full"
-                        width={1013}
+                        width="100%"
                         height={500}
                         url={`https://www.youtube.com/watch?v=${currentVideo.snippet.resourceId.videoId}`}
                         controls
                         pip={true}
                     />
+
                     <div className="flex flex-row gap-8 pl-10 py-4 font-semibold text-xl text-secondary">
                         {navOptions.map(option => {
                             return (
