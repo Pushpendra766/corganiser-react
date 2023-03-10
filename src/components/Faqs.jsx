@@ -22,13 +22,13 @@ export const Faqs = () => {
             <div className="m-auto border-2 border-dark bg-light rounded-xl p-4 md:p-8 text-base md:text-lg md:w-8/12 w-11/12">
                 {questions.map((question, index) => {
                     return (
-                        <>
+                        <div key={index}>
                             <p className="font-semibold">
                                 {index + 1}. {question.question}
                             </p>
                             <p className="md:pl-10">{question.answer}</p>
                             <br />
-                        </>
+                        </div>
                     );
                 })}
             </div>

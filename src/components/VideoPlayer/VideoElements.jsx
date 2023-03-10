@@ -25,11 +25,11 @@ export const Description = ({ description }) => {
     const lines = description.split("\n");
     return (
         <div className="p-4">
-            {lines.map(line => {
+            {lines.map((line, idx) => {
                 return (
-                    <>
+                    <div key={idx}>
                         <p>{line}</p>
-                    </>
+                    </div>
                 );
             })}
         </div>
@@ -78,9 +78,9 @@ export const Notes = ({ title, player }) => {
                 {notes
                     .slice(0)
                     .reverse()
-                    .map(note => {
+                    .map((note, idx) => {
                         return (
-                            <>
+                            <div key={idx}>
                                 <p>
                                     <span
                                         className="font-bold text-dark cursor-pointer"
@@ -92,7 +92,7 @@ export const Notes = ({ title, player }) => {
                                     {note.note}
                                 </p>
                                 <br />
-                            </>
+                            </div>
                         );
                     })}
             </div>
