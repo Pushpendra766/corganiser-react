@@ -2,13 +2,14 @@ import React from "react";
 import { CourseCard } from "./courseCard";
 import { useState, useRef } from "react";
 import axios from "axios";
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import AddCourseModal from "./AddCourseModal";
 
 export const LearningSection = () => {
   const [courses, setCourses] = useState([]);
-  const inputRef = useRef(null);
   const [addCourse, setAddCourse] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = (inputRef) => {
     const link = inputRef.current.value;
     inputRef.current.value = null;
     const playlistID = link.split("list=")[1].split("&")[0];
@@ -49,8 +50,8 @@ export const LearningSection = () => {
           return <CourseCard course={course} key={course.name} />;
         })}
         <div className="bg-[#ffffff] w-60 border-2 border-secondary rounded-lg p-2">
-          <div className="m-16">
-            <img src="/svg/add.svg" alt="add" width={100} />
+          <div className="w-min mx-auto pt-16 pb-12">
+            <AiOutlinePlusCircle size={80} color={"#1a3d41"} />
           </div>
           <button
             className="border rounded-full px-10 py-2 font-semibold w-full text-[#ffffff] bg-primary hover:bg-dark text-base mt-6 whitespace-nowrap"
@@ -62,49 +63,7 @@ export const LearningSection = () => {
           </button>
         </div>
       </div>
-
-      {/* For making the background black while popup */}
-      <div
-        className={`absolute w-full h-full bg-[#000000b5] z-10 ${
-          addCourse !== true && "hidden"
-        }`}
-      ></div>
-
-      {/* Pop up */}
-      <div
-        className={`border-2 w-11/12 md:w-8/12 lg:w-4/12 left-auto top-auto absolute z-20 px-6 pt-4 ${
-          addCourse !== true && "hidden"
-        } rounded-lg bg-[#ffffff] border-[#ffffff]`}
-      >
-        <div className="flex flex-row justify-between mx-4 pb-4">
-          <h1 className="text-2xl font-bold text-primary">Add New Course</h1>
-          <button
-            className="text-2xl font-bold"
-            onClick={() => {
-              setAddCourse(false);
-            }}
-          >
-            <img src="/svg/close.svg" alt="close" width={25} />
-          </button>
-        </div>
-        <hr className="pb-8" />
-        <input
-          ref={inputRef}
-          className="border-2 border-primary bg-light rounded-sm w-full"
-          type="text"
-          name="course-name"
-          placeholder="Paste playlist link here..."
-        />
-        <button
-          className="border whitespace-nowrap rounded-full px-10 py-2 font-semibold w-6/12 text-[#ffffff] bg-primary hover:bg-dark text-base mt-6 ml-28"
-          onClick={() => {
-            setAddCourse(false);
-            handleClick();
-          }}
-        >
-          Add Course
-        </button>
-      </div>
+      <AddCourseModal isOpen={addCourse} onClose={() => setAddCourse(false)} handleClick={handleClick}/>
     </>
   );
 };
