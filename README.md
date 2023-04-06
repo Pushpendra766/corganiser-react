@@ -2,7 +2,7 @@
 
 The word 'Corganiser' comes from two words 'course' and 'organiser'. Corganiser is a webapp that can organise your course playlist from youtube and make it an organised course while avoiding distractions from other suggested videos and from youtube ADs. You can also take notes here and save them for use in future or just for revising.
 
-[Click here](https://corganiser.netlify.app/) to see the live preview.
+Live preview [Click here](https://corganiser.netlify.app/).
 
 # Getting Started 
 
