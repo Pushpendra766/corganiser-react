@@ -4,7 +4,7 @@ The word 'Corganiser' comes from two words 'course' and 'organiser'. Corganiser 
 
 ## Demo
 
-![](https://github.com/Pushpendra766/corganiser-react/blob/main/client/src/assets/corganiser.gif)
+![](https://github.com/Pushpendra766/corganiser-react/blob/main/src/assets/corganiser.gif)
 
 ## Live Preview
 
